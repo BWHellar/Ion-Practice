@@ -3,6 +3,14 @@ const amount = document.querySelector('#amount');
 const add = document.querySelector('#add');
 const cancel = document.querySelector('#cancel');
 const list = document.querySelector('#list');
+const total = document.querySelector('#total');
+
+let totalExp = 0;
+
+const clear = () => {
+    expense.value ='';
+    amount.value = '';
+};
 
 add.addEventListener('click', () => {
     const enteredExpense = expense.value;
@@ -18,4 +26,9 @@ add.addEventListener('click', () => {
     item.textContent = enteredExpense + ': $' + enteredAmount;
 
     list.appendChild(item);
+    totalExp += +enteredAmount;
+    total.textContent = totalExp;
+    clear();
 });
+
+cancel.addEventListener('click', clear);
